@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "react-scripts-ts start",
+    "precommit": "lint-staged",
     "build": "react-scripts-ts build",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "test": "react-scripts-ts test --env=jsdom --testResultsProcessor=jest-sonar-reporter --collectCoverage --coverage",
@@ -24,6 +25,9 @@
     "@types/react": "^16.7.11",
     "@types/react-dom": "^16.0.11",
     "babel-jest": "^23.6.0",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3",
     "cross-env": "^5.1.0",
     "enzyme": "^3.7.0",
     "enzyme-to-json": "^3.3.4",
@@ -45,6 +49,12 @@
   "jest": {
     "collectCoverageFrom": [
       "src/app/**/*.{ts,tsx}"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
     ]
   },
   "browserslist": [
