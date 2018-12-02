@@ -10,6 +10,7 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "precommit": "lint-staged",
+    "format": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,tsx,json,css}'",
     "build": "react-scripts-ts build",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "test": "react-scripts-ts test --env=jsdom --testResultsProcessor=jest-sonar-reporter --collectCoverage --coverage",
@@ -49,10 +50,18 @@
   "jest": {
     "collectCoverageFrom": [
       "src/app/**/*.{ts,tsx}"
-    ]
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 95,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
+    "src/**/*.{js,jsx,tsx,json,css}": [
       "prettier --single-quote --write",
       "git add"
     ]
