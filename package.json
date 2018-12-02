@@ -12,6 +12,7 @@
     "build": "react-scripts-ts build",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "test": "react-scripts-ts test --env=jsdom --testResultsProcessor=jest-sonar-reporter --collectCoverage --coverage",
+    "sonar": "sonar-scanner",
     "eject": "react-scripts-ts eject",
     "clear": "rm -rf build || true && rm -rf coverage || true && rm -rf .scannerwork || true && rm -rf reports || true",
     "clear-hard": "rm -rf node_modules || true && npm cache clear --force  && rm -rf package-lock.json || true && npm run clear",
@@ -40,6 +41,11 @@
     "reportPath": "reports",
     "reportFile": "test-reporter.xml",
     "indent": 4
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/app/**/*.{ts,tsx}"
+    ]
   },
   "browserslist": [
     ">0.2%",
