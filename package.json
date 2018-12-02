@@ -5,21 +5,47 @@
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-scripts-ts": "^4.0.8"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "test": "react-scripts-ts test --env=jsdom --testResultsProcessor=jest-sonar-reporter --collectCoverage --coverage",
+    "eject": "react-scripts-ts eject",
+    "clear": "rm -rf build || true && rm -rf coverage || true && rm -rf .scannerwork || true && rm -rf reports || true",
+    "clear-hard": "rm -rf node_modules || true && npm cache clear --force  && rm -rf package-lock.json || true && npm run clear",
+    "reset": "npm run clear-hard && npm install"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.11",
+    "@types/react": "^16.7.11",
+    "@types/react-dom": "^16.0.11",
+    "babel-jest": "^23.6.0",
+    "cross-env": "^5.1.0",
+    "enzyme": "^3.7.0",
+    "enzyme-to-json": "^3.3.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-junit": "^3.1.0",
+    "jest-localstorage-mock": "^2.3.0",
+    "jest-sonar-reporter": "^1.3.0",
+    "react-jest": "^0.2.1",
+    "react-native-web": "^0.9.8",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.2.1"
+  },
+  "jestSonar": {
+    "reportPath": "reports",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://localhost:8080"
 }
